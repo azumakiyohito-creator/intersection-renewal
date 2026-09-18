@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Intersection株式会社｜映像の企画・制作</title>
+<meta name="description" content="Intersection株式会社は、ブランディング・プロモーション・採用映像の企画・制作を行っています。現在ウェブサイトをリニューアル中です。">
+<meta property="og:title" content="Intersection株式会社">
+<meta property="og:description" content="ウェブサイトをリニューアルしています。映像制作のご相談はメールで受け付けています。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.intersection.co.jp/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Shippori+Mincho:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0c0c;
+    --fg: #ecebe6;
+    --muted: #9a9993;
+    --line: #262626;
+    --signal: #d9a441;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Noto Sans JP", "Hiragino Sans", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+    font-size: 15px;
+    line-height: 1.9;
+    letter-spacing: .02em;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 28px 0; border-bottom: 1px solid var(--line);
+  }
+  .logo { font-size: 13px; font-weight: 500; letter-spacing: .32em; }
+  .status {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11px; color: var(--muted); letter-spacing: .16em;
+  }
+  .status .long { white-space: pre; }
+  .status::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--signal); animation: blink 2.4s ease-in-out infinite;
+  }
+  @keyframes blink { 50% { opacity: .2; } }
+
+  .hero { padding: 96px 0 64px; }
+  h1 {
+    font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    font-weight: 500; font-size: clamp(28px, 5vw, 46px);
+    line-height: 1.55; letter-spacing: .06em;
+  }
+  .lead { margin-top: 28px; color: var(--muted); word-break: auto-phrase; }
+  .actions { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; }
+  .btn {
+    display: inline-block; padding: 15px 30px;
+    background: var(--fg); color: var(--bg); text-decoration: none;
+    font-size: 14px; font-weight: 500; letter-spacing: .08em;
+    transition: opacity .2s;
+  }
+  .btn:hover { opacity: .85; }
+  .textlink {
+    font-size: 14px; color: var(--muted); text-decoration: none;
+    border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: color .2s;
+  }
+  .textlink:hover { color: var(--fg); }
+
+  .section { padding-top: 88px; }
+  h2 { font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .26em; margin-bottom: 28px; }
+  h3 { font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: .2em; margin: 48px 0 16px; }
+  h2 + h3 { margin-top: 0; }
+  .reel + h3 { margin-top: 56px; }
+
+  .reel {
+    position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; margin-bottom: 8px;
+    background: radial-gradient(ellipse at center, #1a1a1a 0%, #050505 75%);
+    border: 1px solid var(--line); cursor: pointer; color: var(--fg); font: inherit;
+  }
+  .reel-inner { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 18px; }
+  .play {
+    width: 76px; height: 76px; border-radius: 50%;
+    border: 1px solid rgba(236, 235, 230, .6);
+    display: grid; place-items: center; transition: transform .3s, border-color .3s;
+  }
+  .play::after {
+    content: ""; margin-left: 5px;
+    border-left: 16px solid var(--fg);
+    border-top: 10px solid transparent; border-bottom: 10px solid transparent;
+  }
+  .reel:hover .play { transform: scale(1.06); border-color: var(--fg); }
+  .reel-label { font-size: 12px; letter-spacing: .32em; color: var(--muted); }
+  .reel iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .grid { list-style: none; display: grid; gap: 32px 20px; }
+  .grid-movie { grid-template-columns: repeat(3, 1fr); }
+  .grid-short { grid-template-columns: repeat(4, 1fr); }
+  .card { display: block; text-decoration: none; }
+  .thumb { position: relative; overflow: hidden; background: #000; }
+  .grid-movie .thumb { aspect-ratio: 16 / 9; }
+  .grid-short .thumb { aspect-ratio: 9 / 16; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: .88; transition: opacity .3s, transform .6s; }
+  .thumb::after {
+    content: ""; position: absolute; left: 50%; top: 50%;
+    width: 48px; height: 48px; margin: -24px 0 0 -24px; border-radius: 50%;
+    border: 1px solid rgba(236, 235, 230, .7); background: rgba(0, 0, 0, .25);
+    opacity: 0; transition: opacity .3s;
+  }
+  .thumb::before {
+    content: ""; position: absolute; left: 50%; top: 50%; z-index: 1; margin: -7px 0 0 -4px;
+    border-left: 12px solid var(--fg); border-top: 7px solid transparent; border-bottom: 7px solid transparent;
+    opacity: 0; transition: opacity .3s;
+  }
+  .card:hover .thumb img { opacity: 1; transform: scale(1.03); }
+  .card:hover .thumb::after, .card:hover .thumb::before { opacity: 1; }
+  .card-title { margin-top: 12px; font-size: 14px; line-height: 1.6; word-break: auto-phrase; }
+  .card-meta { margin-top: 2px; font-size: 11px; color: var(--muted); letter-spacing: .08em; word-break: auto-phrase; }
+
+  .company { display: grid; grid-template-columns: 6em 1fr; border-top: 1px solid var(--line); }
+  .company dt, .company dd { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .company dt { color: var(--muted); }
+
+  footer { padding: 88px 0 40px; font-size: 11px; color: var(--muted); letter-spacing: .12em; }
+
+  @media (max-width: 900px) {
+    .grid-short { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .hero { padding: 64px 0 48px; }
+    h1 { font-size: 24px; letter-spacing: .04em; }
+    .logo { letter-spacing: .24em; }
+    .status { font-size: 10px; letter-spacing: .08em; }
+    .status .long { display: none; }
+    .grid-movie { grid-template-columns: repeat(2, 1fr); gap: 24px 14px; }
+    .card-title { font-size: 13px; }
+    .grid-short { grid-template-columns: repeat(2, 1fr); gap: 28px 14px; }
+    .company { grid-template-columns: 5em 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">INTERSECTION</div>
+    <div class="status"><span>RENEWAL<span class="long"> IN PROGRESS</span></span></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>ウェブサイトを<br>リニューアルしています。</h1>
+      <p class="lead">新しいサイトの公開まで、しばらくお待ちください。<br>映像制作のご相談・お問い合わせは、メールで受け付けています。</p>
+      <div class="actions">
+        <a class="btn" href="mailto:azuma.k@intersection.co.jp?subject=%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%EF%BC%88Web%E3%82%B5%E3%82%A4%E3%83%88%E3%82%88%E3%82%8A%EF%BC%89">メールで相談する</a>
+        <a class="textlink" href="#works">実績を見る ↓</a>
+      </div>
+    </section>
+
+    <section class="section" id="works">
+      <h2>WORKS</h2>
+      <button class="reel" type="button" data-id="PaGVQ6onbF0" aria-label="ショーリールを再生">
+        <span class="reel-inner">
+          <span class="play"></span>
+          <span class="reel-label">SHOWREEL</span>
+        </span>
+      </button>
+      <h3>MOVIE</h3>
+      <ul class="grid grid-movie">
+        <li><a class="card" href="https://www.youtube.com/watch?v=ap5R3AyAmPc" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/ap5R3AyAmPc/maxresdefault.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">PR映像</p><p class="card-meta">Corporate</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/watch?v=D_Ygh2ycetI" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/D_Ygh2ycetI/maxresdefault.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">採用動画</p><p class="card-meta">Corporate ／ Recruiting</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/watch?v=O4z1kh0R5DY" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/O4z1kh0R5DY/maxresdefault.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">事業紹介アニメーション</p><p class="card-meta">Corporate ／ Animation</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/watch?v=Ui2r-E2bSww" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/Ui2r-E2bSww/maxresdefault.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">広告映像</p><p class="card-meta">Advertising</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/watch?v=cxH_GOSNKw4" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/cxH_GOSNKw4/maxresdefault.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">「希望の光」</p><p class="card-meta">Music Video ／ カメカワユウ</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/watch?v=ujAEaHjK-wo" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/ujAEaHjK-wo/maxresdefault.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">「静かな決意」</p><p class="card-meta">Music Video ／ カメカワユウ</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/watch?v=Oxxm8R4sXss" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/Oxxm8R4sXss/maxresdefault.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">「ひまわりの唄」</p><p class="card-meta">Music Video</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/watch?v=ZNf5SO1az3A" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/ZNf5SO1az3A/maxresdefault.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">イエローページセタガヤ</p><p class="card-meta">Brand Movie</p>
+        </a></li>
+      </ul>
+      <h3>SHORT</h3>
+      <ul class="grid grid-short">
+        <li><a class="card" href="https://www.youtube.com/watch?v=TqJKWfj3kSE" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/TqJKWfj3kSE/sddefault.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">ショートドラマ</p><p class="card-meta">Drama</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/shorts/l2hnTRxgTF8" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/l2hnTRxgTF8/oar2.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">Y.M.Walts 26SS Collection</p><p class="card-meta">Fashion</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/shorts/05F8K1IrjcM" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/05F8K1IrjcM/oar2.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">Y.M.Walts 25AW Collection</p><p class="card-meta">Fashion</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/shorts/ldtY7RonCjU" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/ldtY7RonCjU/oar2.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">Y.M.Walts 24SS Collection</p><p class="card-meta">Fashion</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/shorts/YKN4qDnbK8A" target="_blank" rel="noopener">
+          <div class="thumb"><img src="images/withfam-foam.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">Beaute Rondo Withfam（泡）</p><p class="card-meta">Beauty ／ PR</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/shorts/HO9I3oTWy2I" target="_blank" rel="noopener">
+          <div class="thumb"><img src="images/withfam-cream.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">Beaute Rondo Withfam（クリーム）</p><p class="card-meta">Beauty ／ PR</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/shorts/SEX7V3uqI3I" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/SEX7V3uqI3I/oar2.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">SUNTAN SUMMER MAKEUP</p><p class="card-meta">Beauty</p>
+        </a></li>
+        <li><a class="card" href="https://www.youtube.com/shorts/HNUVux8zIEQ" target="_blank" rel="noopener">
+          <div class="thumb"><img src="https://i.ytimg.com/vi/HNUVux8zIEQ/oar2.jpg" alt="" loading="lazy"></div>
+          <p class="card-title">Lazy day minimum makeup</p><p class="card-meta">Beauty</p>
+        </a></li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>COMPANY</h2>
+      <dl class="company">
+        <dt>会社名</dt><dd>Intersection株式会社</dd>
+        <dt>代表</dt><dd>代表取締役　東 清仁</dd>
+        <dt>事業内容</dt><dd>映像の企画・制作（ブランディング／プロモーション／採用）</dd>
+        <dt>所在地</dt><dd>〒154-0041<br>東京都渋谷区神南1丁目11-4 FPGリンクス神南5階</dd>
+        <dt>連絡先</dt><dd><a href="mailto:azuma.k@intersection.co.jp">azuma.k@intersection.co.jp</a></dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer>© Intersection Inc.</footer>
+</div>
+
+<script>
+  document.querySelector(".reel").addEventListener("click", function () {
+    var id = this.dataset.id;
+    this.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+      '?autoplay=1&rel=0" title="Intersection Showreel" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+  }, { once: true });
+</script>
+</body>
+</html>
